@@ -46,7 +46,7 @@ describe('ConstructorSpy', () => {
 })
 
 describe('ConstructorSpy', () => {
-  describe('#generateSpyKitClass()', () => {
+  describe('#spyOn()', () => {
     describe('spy works', () => {
       const generator = ConstructorSpy.create({ jest })
 
@@ -91,7 +91,7 @@ describe('ConstructorSpy', () => {
       ]
 
       test.each(table)('params length: $tallyParams.length', ({ tallyParams }) => {
-        const SpyKit = generator.generateSpyKitClass(Target)
+        const SpyKit = generator.spyOn(Target)
 
         SpyKit.create(...tallyParams)
 
