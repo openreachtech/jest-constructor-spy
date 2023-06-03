@@ -1,6 +1,6 @@
 'use strict'
 
-const ConstructorSpy = require('../ConstructorSpy')
+const ConstructorSpy = require('../lib/ConstructorSpy')
 
 globalThis.constructorSpy = ConstructorSpy.create({
   jest,
