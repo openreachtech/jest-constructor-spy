@@ -39,6 +39,48 @@ test('to call constructor with 12000', () => {
 })
 ```
 
+## Setup in `jest.config.js`
+
+* You can refer to an instance of `ConstructorSpy` by `constructorSpy` in each test by using the following in `setupFilesAfterEnv` in `jest.config.js`.
+
+
+```javascript
+// jest.config.js
+
+module.exports = {
+  setupFilesAfterEnv: [
+    ...
+
+    '@openreachtech/config/setupAfterEnv.js',.
+
+    ...
+  ], ...
+}
+```
+
+```javascript
+// __tests__/test.js
+
+class Sample {
+  constructor (value) {
+    this.value
+  }
+
+  static createWithDefaultValue () {
+    return new this(12000)
+  }
+}
+
+test('to call constructor with 12000', () => {
+  const SpiedSample = constructorSpy.spyOn(Sample)
+
+  SpiedSample.createWithDefaultValue()
+
+  expect(SpiedSample.__spy__)
+    .toHaveBeenCalledWith(12000)
+})
+```
+
 ## License
 
 * This project is released under the MIT License.<br>
