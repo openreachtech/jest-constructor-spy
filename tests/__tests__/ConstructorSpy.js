@@ -28,6 +28,11 @@ describe('ConstructorSpy', () => {
       const constructorSpy = jest.fn()
 
       const DerivedClass = class extends ConstructorSpy {
+        /**
+         * Constructor of derived class.
+         *
+         * @param {*} args - Arguments of this constructor.
+         */
         constructor (args) {
           super(args)
 
@@ -50,6 +55,11 @@ describe('ConstructorSpy', () => {
     describe('spy works', () => {
       const generator = ConstructorSpy.create({ jest })
 
+      /**
+       * Spy target class.
+       *
+       * @class
+       */
       class Target {
         /**
          * Constructor.
