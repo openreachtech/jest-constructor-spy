@@ -74,7 +74,7 @@ describe('ConstructorSpy', () => {
          * Factory method.
          *
          * @param {Array<*>} params - Params of this constructor.
-         * @returns {Target} - Instance of this class.
+         * @returns {*} - Instance of this class.
          */
         static create (...params) {
           return new this(...params)
