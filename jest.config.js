@@ -6,6 +6,6 @@ module.exports = {
     './config/setupAfterEnv.js',
   ],
   testPathIgnorePatterns: [
-    '/node_modules/'
+    '/node_modules/',
   ],
 }
