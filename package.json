@@ -1,6 +1,6 @@
 {
   "name": "@openreachtech/jest-constructor-spy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "`ConstructorSpy` is a module designed to spy on the constructor of JavaScript class in Jest. It allows developers to easily track and monitor the usage of the constructor in their Jest tests.",
   "files": [
     "config/",
@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/openreachtech/jest-constructor-spy#readme",
   "devDependencies": {
-    "@openreachtech/eslint-config": "^0.3.0",
+    "@openreachtech/eslint-config": "^2.0.1",
     "@openreachtech/renchan-test-tools": "^1.0.0",
     "@types/jest": "^29.5.1",
     "eslint": "^8.41.0",

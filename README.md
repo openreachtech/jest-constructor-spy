@@ -3,9 +3,28 @@
 
 ## Installation
 
-* Node.js is required. If it is not installed yet, please do so before proceeding. And more, requires Jest.
+* Node.js is required. If it is not installed yet, please do so before proceeding.
 
-* You can install `ConstructorSpy` with the following command:
+  | tools | version |
+  | :-- | :-- |
+  | Node.js | ^18.20.1 |
+  | npm | ^8.19.4 |
+
+* A testing tool such as Jest is required. The following is an example of how to install Jest. If you prefer to use a different testing tool, please refer to its specific installation guide. Require Jest version 29.5.0 or greater.
+
+  ```
+  npm install --save-dev jest
+  ```
+
+* Create a `.npmrc` file in the root directory of your project and add any necessary configurations. This might be required for installing certain npm packages.
+
+* Please add the following line to your `.npmrc` file.
+
+  ```
+  @openreachtech:registry=https://npm.pkg.github.com
+  ```
+
+* You can install `ConstructorSpy` with Jest version 29.5.0 or greater by the following command:
 
   ```
   npm install --save-dev @openreachtech/jest-constructor-spy
