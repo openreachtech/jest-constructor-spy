@@ -4,11 +4,20 @@
   "description": "`ConstructorSpy` is a module designed to spy on the constructor of JavaScript class in Jest. It allows developers to easily track and monitor the usage of the constructor in their Jest tests.",
   "files": [
     "config/",
+    "index.mjs",
     "lib/",
     "LICENSE",
     "README.md"
   ],
   "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js",
+      "node": "./index.js",
+      "default": "./index.js"
+    }
+  },
   "scripts": {
     "l": "npm run lint",
     "lint": "eslint .",
