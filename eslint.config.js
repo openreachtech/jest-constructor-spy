@@ -11,6 +11,7 @@ module.exports = [
   {
     ignores: [
       'index.mjs',
+      'config/setupAfterEnv.mjs',
     ],
   },
 
