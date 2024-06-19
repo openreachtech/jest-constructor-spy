@@ -5,9 +5,7 @@
   "files": [
     "config/",
     "index.mjs",
-    "lib/",
-    "LICENSE",
-    "README.md"
+    "lib/"
   ],
   "main": "index.js",
   "exports": {
