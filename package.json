@@ -32,7 +32,7 @@
     "constructor"
   ],
   "author": "Open Reach Tech Inc.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/openreachtech/jest-constructor-spy/issues"
   },
