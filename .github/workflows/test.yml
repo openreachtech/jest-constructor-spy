@@ -1,14 +1,16 @@
 name: Node.js CI
 
 on:
-  push:
-    branches:
-      - dev
-      - env
-      - main
   pull_request:
     branches:
       - '**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -20,10 +22,10 @@ jobs:
 
     steps:
       - name: 🛎 Checkout repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: 🏗 Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
@@ -35,7 +37,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TO_REPO_OF_ORT_PRIVATE }}
 
-      - name: 🔍 ESLint
+      - name: 🧵 ESLint
         run: npm run lint
 
       - name: 🧪 Jest
