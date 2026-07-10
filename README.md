@@ -8,7 +8,7 @@
   | tools | version |
   | :-- | :-- |
   | Node.js | >= 20.0.0 |
-  | npm | ^8.19.4 |
+  | npm | >= 10.0.0 |
 
 * A testing tool such as Jest is required. The following is an example of how to install Jest. If you prefer to use a different testing tool, please refer to its specific installation guide. Require Jest version 29.5.0 or greater.
 
