@@ -5,7 +5,8 @@
   "files": [
     "config/",
     "index.mjs",
-    "lib/"
+    "lib/",
+    "types/"
   ],
   "main": "index.js",
   "exports": {
