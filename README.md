@@ -111,6 +111,6 @@ See [here](./LICENSE)
 
 ## Authors
 
-* Open Reach Tech inc.
+* Open Reach Tech Inc.
 
 * We strive to meet user expectations and welcome any kind of feedback.
