@@ -34,8 +34,6 @@ jobs:
 
       - name: 📦 Install packages
         run: npm ci
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.TO_REPO_OF_ORT_PRIVATE }}
 
       - name: 🧵 ESLint
         run: npm run lint
