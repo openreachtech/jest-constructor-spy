@@ -7,8 +7,8 @@
 
   | tools | version |
   | :-- | :-- |
-  | Node.js | ^18.20.1 |
-  | npm | ^8.19.4 |
+  | Node.js | >= 20.0.0 |
+  | npm | >= 10.0.0 |
 
 * A testing tool such as Jest is required. The following is an example of how to install Jest. If you prefer to use a different testing tool, please refer to its specific installation guide. Require Jest version 29.5.0 or greater.
 
@@ -70,7 +70,7 @@ module.exports = {
   setupFilesAfterEnv: [
     ...
 
-    '@openreachtech/config/setupAfterEnv.js',.
+    '@openreachtech/jest-constructor-spy/config/setupAfterEnv.js',
 
     ...
   ], ...
@@ -102,8 +102,9 @@ test('to call constructor with 12000', () => {
 
 ## License
 
-* This project is released under the MIT License.<br>
-See [here](./LICENSE)
+This project is released under the MIT License.
+
+For more details, please see [in the LICENSE file](./LICENSE).
 
 ## Contribution
 
@@ -111,6 +112,6 @@ See [here](./LICENSE)
 
 ## Authors
 
-* Open Reach Tech inc.
+* Open Reach Tech Inc.
 
 * We strive to meet user expectations and welcome any kind of feedback.
