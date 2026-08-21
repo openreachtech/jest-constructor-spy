@@ -3,7 +3,10 @@ sequelize/storage/
 
 #### environment
 .env
-node_modules
+node_modules/
+
+#### Build output
+dist/
 
 #### for Windows
 Thumbs.db
@@ -17,3 +20,9 @@ ehthumbs_vista.db
 #### environment to develop
 .vscode/*
 !.vscode/cspell.json
+!.vscode/settings.json
+
+#### Lock files
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
