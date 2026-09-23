@@ -5,6 +5,9 @@ sequelize/storage/
 .env
 node_modules/
 
+#### Build output
+dist/
+
 #### for Windows
 Thumbs.db
 Thumbs.db:encryptable
