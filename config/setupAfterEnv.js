@@ -1,6 +1,6 @@
-'use strict'
+import { jest } from '@jest/globals'
 
-const ConstructorSpy = require('../lib/ConstructorSpy')
+import ConstructorSpy from '../lib/ConstructorSpy.js'
 
 globalThis.constructorSpy = ConstructorSpy.create({
   jest,

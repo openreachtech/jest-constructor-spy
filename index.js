@@ -1,7 +1,5 @@
-'use strict'
+import ConstructorSpy from './lib/ConstructorSpy.js'
 
-const ConstructorSpy = require('./lib/ConstructorSpy')
-
-module.exports = {
+export {
   ConstructorSpy,
 }

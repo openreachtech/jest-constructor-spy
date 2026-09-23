@@ -30,12 +30,27 @@
   npm install --save-dev @openreachtech/jest-constructor-spy
   ```
 
+## Requirements
+
+* `ConstructorSpy` is published as an ES module, and offers no CommonJS entry point.
+
+  * The package that consumes it declares `"type": "module"` in its `package.json`.
+  * Jest runs with the `--experimental-vm-modules` flag of Node.js.
+
+  ```json
+  {
+    "scripts": {
+      "test": "export NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\"; jest"
+    }
+  }
+  ```
+
 ## Usage
 
 * When you design a class with factory method, `ConstructorSpy` can test to call constructor from the factory method.
 
 ```javascript
-const { ConstructorSpy } = require('@openreachtech/jest-constructor-spy')
+import { ConstructorSpy } from '@openreachtech/jest-constructor-spy'
 
 class Sample {
   constructor (value) {
@@ -66,7 +81,7 @@ test('to call constructor with 12000', () => {
 ```javascript
 // jest.config.js
 
-module.exports = {
+export default {
   setupFilesAfterEnv: [
     ...
 
