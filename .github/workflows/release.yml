@@ -17,6 +17,10 @@ on:
 # the release would leave the tag without one. Each merge runs once and is never
 # rerun, so there is nothing for a group to protect.
 
+# Required to create the tag and the release.
+permissions:
+  contents: write
+
 jobs:
   tag-and-release:
     # Only run when PR is merged
