@@ -13,9 +13,9 @@ on:
     branches:
       - main
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+# ⚠️ Don't add concurrency: here, because cancelling a run between the tag and
+# the release would leave the tag without one. Each merge runs once and is never
+# rerun, so there is nothing for a group to protect.
 
 jobs:
   tag-and-release:
