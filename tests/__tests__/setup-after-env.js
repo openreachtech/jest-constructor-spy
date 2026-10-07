@@ -1,6 +1,6 @@
 import ConstructorSpy from '../../lib/ConstructorSpy.js'
 
-describe('setupAfterEnv', () => {
+describe('setup-after-env', () => {
   test('to be presented', () => {
     expect(globalThis.constructorSpy)
       .toBeInstanceOf(ConstructorSpy)

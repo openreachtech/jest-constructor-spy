@@ -1,6 +1,6 @@
 export default {
   setupFilesAfterEnv: [
-    './config/setupAfterEnv.js',
+    './lib/setup-after-env.js',
   ],
   testPathIgnorePatterns: [
     '/node_modules/',
