@@ -8,7 +8,9 @@
     "types/"
   ],
   "exports": {
-    ".": "./index.js"
+    ".": "./index.js",
+    "./lib/*": "./lib/*",
+    "./types/*": "./types/*"
   },
   "type": "module",
   "scripts": {
