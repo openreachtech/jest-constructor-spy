@@ -1,27 +1,29 @@
 import configurations from '@openreachtech/eslint-config'
+import coreRuleOptionHash from '@openreachtech/eslint-config/lib/configurations/core-rule-option-hash.js'
 
 export default [
   ...configurations,
 
-  {
-    languageOptions: {
-      sourceType: 'module',
-    },
-  },
-
-  /*
-   * Nothing in this repository can clear the two entries below. Both answer a
-   * premise the shared config holds that an ES module does not meet.
-   */
+  // Nothing in this repository can clear the two entries below. Both answer a
+  // premise the shared config holds that this package does not meet.
   {
     rules: {
+      'no-restricted-syntax': [
+        'error',
+        // There are 0 or more rest parameters in the array
+        // string | { selector: string, message: string }
+        ...coreRuleOptionHash['no-restricted-syntax'].spreadOptions
+          // This package exists to spy on a constructor, so the constructor of the class
+          // it builds has to call the spy.
+          .filter(({ selector }) => selector !== 'MethodDefinition[kind=constructor] BlockStatement CallExpression:not([callee.type=Super])'),
+      ],
+
       // Jest injects describe(), test() and expect() into an ES module and does not
       // inject jest, so every file reaching for the object imports it from
       // @jest/globals and shadows the global the shared config declares. Turning
       // that global off instead was tried and is worse: the name is also the type
       // namespace @types/jest declares, and dropping it left every jest.SpyInstance
-      // in the JSDoc undefined. The shared config allows it here for the same
-      // reason, and every other option is its own.
+      // in the JSDoc undefined.
       'no-shadow': [
         'error',
         {
@@ -29,39 +31,11 @@ export default [
           hoist: 'all',
           ignoreOnInitialization: true,
           allow: [
-            'it',
+            ...coreRuleOptionHash['no-shadow'].allow,
             'jest',
-            'length',
-            'name',
-            'status',
-            'target',
-          ],
-        },
-      ],
-
-      // The import convention groups imports from farthest to nearest with a blank
-      // line between the groups, and sort-imports reads the whole file as one run
-      // unless it is told the groups stand apart. Without this, a third-party import
-      // whose local name sorts after an application one cannot be written where the
-      // convention puts it. Every other option is the shared config's.
-      'sort-imports': [
-        'error',
-        {
-          allowSeparatedGroups: true,
-          ignoreCase: false,
-          ignoreDeclarationSort: false,
-          ignoreMemberSort: false,
-          memberSyntaxSortOrder: [
-            'none',
-            'all',
-            'multiple',
-            'single',
           ],
         },
       ],
     },
   },
-
-  // Below this line go the entries waiting on a change to this repository's own
-  // code. There are none.
 ]
