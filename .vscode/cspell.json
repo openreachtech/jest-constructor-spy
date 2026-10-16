@@ -3,9 +3,11 @@
     "openreachtech",
 
     "codenames",
+    "dotenv",
+    "eslintcache",
     "hostnames",
     "npmjs",
-    "sequelize",
+    "regenerable",
     "unbumped"
   ],
   "ignoreWords": [
