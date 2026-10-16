@@ -1,10 +1,16 @@
 {
   "words": [
-    "jsdoc",
-    "openreach",
     "openreachtech",
-    "renchan",
 
+    "codenames",
+    "hostnames",
+    "npmjs",
+    "sequelize",
+    "unbumped"
+  ],
+  "ignoreWords": [
+    "ehthumbs",
+    "encryptable",
     "esac"
   ]
 }
