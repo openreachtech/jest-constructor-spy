@@ -39,6 +39,9 @@
     "@openreachtech/eslint-config": "^4.5.0",
     "eslint": "^9.39.2"
   },
+  "overrides": {
+    "js-yaml": "^4.3.2"
+  },
   "peerDependencies": {
     "@jest/globals": ">=29.5.0",
     "@types/jest": ">=29.5.0",
