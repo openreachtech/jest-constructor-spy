@@ -36,6 +36,7 @@
 
   * The package that consumes it declares `"type": "module"` in its `package.json`.
   * Jest runs with the `--experimental-vm-modules` flag of Node.js.
+  * `jest` and `@jest/globals` are installed at version `29.5.0` or greater. Both are peer dependencies, so the copy your project already has is the one `ConstructorSpy` uses.
 
   ```json
   {
