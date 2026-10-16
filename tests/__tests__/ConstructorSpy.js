@@ -25,7 +25,7 @@ describe('ConstructorSpy', () => {
     })
 
     test('call constructor', () => {
-      const constructorSpy = jest.fn()
+      const derivedConstructorSpy = jest.fn()
 
       const DerivedClass = class extends ConstructorSpy {
         /**
@@ -36,7 +36,7 @@ describe('ConstructorSpy', () => {
         constructor (args) {
           super(args)
 
-          constructorSpy(args)
+          derivedConstructorSpy(args)
         }
       }
 
@@ -44,7 +44,7 @@ describe('ConstructorSpy', () => {
 
       DerivedClass.create(params)
 
-      expect(constructorSpy)
+      expect(derivedConstructorSpy)
         .toHaveBeenCalledWith(params)
     })
   })
