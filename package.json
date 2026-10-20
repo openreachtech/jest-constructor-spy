@@ -42,5 +42,8 @@
     "@types/jest": "^30.0.0",
     "eslint": "^9.39.5",
     "jest": "^30.5.2"
+  },
+  "overrides": {
+    "@typescript-eslint/utils@7": "^8.71.2"
   }
 }
