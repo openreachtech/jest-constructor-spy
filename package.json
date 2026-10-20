@@ -47,5 +47,8 @@
     "@typescript-eslint/utils@7": "^8.71.2",
     "eslint-plugin-jest": "^28.14.0",
     "js-yaml": "^4.3.2"
+  },
+  "allowScripts": {
+    "@parcel/watcher": false
   }
 }
