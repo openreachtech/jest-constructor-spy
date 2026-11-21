@@ -12,7 +12,7 @@
   "scripts": {
     "l": "npm run lint",
     "lint": "eslint .",
-    "test": "export NODE_ENV=development; jest --forceExit --detectOpenHandles"
+    "test": "export NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\"; export NODE_ENV=development; jest --forceExit --detectOpenHandles"
   },
   "repository": {
     "type": "git",
