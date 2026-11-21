@@ -10,14 +10,6 @@
     "lib/",
     "types/"
   ],
-  "exports": {
-    ".": {
-      "import": "./index.mjs",
-      "require": "./index.js",
-      "node": "./index.js",
-      "default": "./index.js"
-    }
-  },
   "scripts": {
     "l": "npm run lint",
     "lint": "eslint .",
