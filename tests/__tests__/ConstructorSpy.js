@@ -1,15 +1,17 @@
-'use strict'
+import {
+  jest as jestClient,
+} from '@jest/globals'
 
-const ConstructorSpy = require('../../lib/ConstructorSpy')
+import ConstructorSpy from '../../lib/ConstructorSpy.js'
 
 describe('ConstructorSpy', () => {
   describe('constructor', () => {
     describe('to keep property', () => {
       test('#jest', () => {
-        const generator = new ConstructorSpy({ jest })
+        const generator = new ConstructorSpy({ jest: jestClient })
 
         expect(generator.jest)
-          .toBe(jest) // same reference.
+          .toBe(jestClient) // same reference.
       })
     })
   })
@@ -18,14 +20,14 @@ describe('ConstructorSpy', () => {
 describe('ConstructorSpy', () => {
   describe('.create()', () => {
     test('instance of', () => {
-      const generator = ConstructorSpy.create({ jest })
+      const generator = ConstructorSpy.create({ jest: jestClient })
 
       expect(generator)
         .toBeInstanceOf(ConstructorSpy)
     })
 
     test('call constructor', () => {
-      const constructorSpy = jest.fn()
+      const constructorSpy = jestClient.fn()
 
       const DerivedClass = class extends ConstructorSpy {
         /**
@@ -40,7 +42,7 @@ describe('ConstructorSpy', () => {
         }
       }
 
-      const params = { jest }
+      const params = { jest: jestClient }
 
       DerivedClass.create(params)
 
@@ -53,7 +55,7 @@ describe('ConstructorSpy', () => {
 describe('ConstructorSpy', () => {
   describe('#spyOn()', () => {
     describe('spy works', () => {
-      const generator = ConstructorSpy.create({ jest })
+      const generator = ConstructorSpy.create({ jest: jestClient })
 
       /**
        * Spy target class.
