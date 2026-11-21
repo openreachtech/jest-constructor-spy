@@ -1,8 +1,6 @@
-'use strict'
+import * as mainExports from '../../lib/index.js'
 
-const mainExports = require('../../index')
-
-const ConstructorSpy = require('../../lib/ConstructorSpy')
+import ConstructorSpy from '../../lib/ConstructorSpy.js'
 
 describe('Classes exported correctly', () => {
   const table = [

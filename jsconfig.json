@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
     "checkJs": true,
-    "moduleResolution": "node",
-    "module": "es2022",
-    "target": "es2022"
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
+    "target": "ES2023",
+    "types": [
+      "jest",
+      "node"
+    ]
   },
   "exclude": [
     "node_modules"

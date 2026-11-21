@@ -1,8 +1,6 @@
-'use strict'
-
-module.exports = {
+export default {
   setupFilesAfterEnv: [
-    './config/setupAfterEnv.js',
+    './config/setup-after-env.js',
   ],
   testPathIgnorePatterns: [
     '/node_modules/',

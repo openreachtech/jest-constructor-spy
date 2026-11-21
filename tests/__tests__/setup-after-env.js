@@ -1,8 +1,6 @@
-'use strict'
+import ConstructorSpy from '../../lib/ConstructorSpy.js'
 
-const ConstructorSpy = require('../../lib/ConstructorSpy')
-
-describe('setupAfterEnv', () => {
+describe('setup-after-env', () => {
   test('to be presented', () => {
     expect(globalThis.constructorSpy)
       .toBeInstanceOf(ConstructorSpy)
