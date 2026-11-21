@@ -12,6 +12,7 @@
   "types": "./types/index.d.ts",
   "scripts": {
     "audit:actions": "node node_modules/@openreachtech/mentsu-github-actions-inspector/scripts/audit-action-version.js",
+    "audit:npm": "node node_modules/@openreachtech/mentsu-npm-audit-gate/scripts/npm-audit-gate.js scripts/stopgap-audit/IGNORED_ADVISORIES.js",
     "l": "npm run lint",
     "lint": "eslint .",
     "test": "export NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\"; export NODE_ENV=development; jest"
