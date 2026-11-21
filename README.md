@@ -35,7 +35,8 @@
 * When you design a class with factory method, `ConstructorSpy` can test to call constructor from the factory method.
 
 ```javascript
-const { ConstructorSpy } = require('@openreachtech/jest-constructor-spy')
+import { jest } from '@jest/globals'
+import { ConstructorSpy } from '@openreachtech/jest-constructor-spy'
 
 class Sample {
   constructor (value) {
