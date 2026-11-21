@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/openreachtech/jest-constructor-spy#readme",
   "devDependencies": {
-    "@openreachtech/eslint-config": "^3.0.2",
+    "@openreachtech/eslint-config": "^4.5.0",
     "@types/jest": "^30.0.0",
     "eslint": "^9.39.5",
     "jest": "^30.5.2"
