@@ -26,11 +26,20 @@ jobs:
     timeout-minutes: 60
 
     steps:
+      # ⚠️ Actions are named by their major tag, and actions.lock pins the commit each one runs.
+      # Regenerate the lockfile with `gh actions-lock --no-narrow`: without the flag the tool
+      # rewrites a major tag to a full one, and the lockfile stops following the major.
       - name: 🛎️ Checkout repository code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7
+        with:
+          # ⚠️ Checkout otherwise leaves the token in .git/config for the rest
+          # of the job, and no step here reaches a remote: npm ci talks to the
+          # registry. What would still reach the token is an install script, which
+          # arrives from whatever the lockfile of the branch under test names.
+          persist-credentials: false
 
       - name: 🏗️ Use Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        uses: actions/setup-node@v7
         with:
           # ⚠️ The npm cache only pays off where ~/.npm is discarded between jobs.
           # On a persistent [self-hosted] runner it re-ships what is already on disk,
@@ -42,12 +51,6 @@ jobs:
           # sweep to bump a pinned major across all of them. Pin a concrete version
           # here only in a repository that genuinely needs one.
           node-version: lts/*
-          # ⚠️ Kept against the boilerplate, which assumes every dependency resolves from
-          # the public registry. @openreachtech/eslint-config is declared at ^3.0.2, a line
-          # published to GitHub Packages alone, so package-lock.json resolves it from there
-          # and npm ci needs a token for that host. Drop this, and the NODE_AUTH_TOKEN
-          # below, once that dependency moves to the public registry.
-          registry-url: https://npm.pkg.github.com
 
       - name: 🖨️ Print environment
         env:
@@ -58,24 +61,30 @@ jobs:
           echo "node  : $(node -v)"
           echo "npm   : $(npm -v)"
 
-      # ⚠️ This gate runs before npm ci, and the order is the point: npm ci puts the
-      # vulnerable files on the runner, and the test run then executes them through the
-      # real code path. The advisory has to answer before anything is fetched. Auditing
-      # first is possible because npm audit resolves the tree from package-lock.json
-      # alone and needs no node_modules; skipping a doomed install is a side benefit.
-      #
-      # ⚠️ When this step fails, check whether npm is answering before reading it as a
-      # finding. A 503 from the advisory service exits 1 exactly as an advisory does, and
-      # npm does not retry the bulk POST — `--fetch-retries=4` still sends one request.
-      # Telling the two apart takes a script that reads `npm audit --json`, and that is
-      # worth carrying only while the service is degraded, which is a passing condition.
-      - name: 🛡️ npm audit
-        run: npm audit
-
       - name: 📦 Install packages
         run: npm ci
+
+      # ⚠️ This gate runs after npm ci and before ESLint and Jest.
+      # The script imports its own dependency from node_modules, so it cannot run before the install.
+      # What still matters is that an advisory answers before the installed files are executed,
+      # and ESLint and Jest are the steps that execute them.
+      # strict-allow-scripts in .npmrc stops npm ci from running install scripts,
+      # so the install itself runs none of that code.
+      #
+      # ⚠️ The script runs npm audit itself and fails on every advisory except the ones
+      # the file it is given lists, a stopgap until a release fixes them.
+      # An entry whose advisory is no longer reported fails too, so the list cannot outlive its reason.
+      #
+      # ⚠️ A 503 from the advisory service leaves npm with no report, and the script says
+      # so rather than listing advisories. npm does not retry the bulk POST —
+      # `--fetch-retries=4` still sends one request — so rerun the job.
+      - name: 🛡️ npm audit
+        run: npm run audit:npm
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.TO_REPO_OF_ORT_PRIVATE }}
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: 🛡️ Audit action versions
+        run: npm run audit:actions
 
       - name: 🧵 ESLint
         run: npm run lint
