@@ -1,8 +1,6 @@
-'use strict'
+import configurations from '@openreachtech/eslint-config'
 
-const configurations = require('@openreachtech/eslint-config')
-
-module.exports = [
+export default [
   /*
    * If ignores is used without any other keys in the configuration object, then the patterns act as global ignores. Here’s an example:
    *
