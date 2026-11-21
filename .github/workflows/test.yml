@@ -83,6 +83,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
+      - name: 🛡️ Audit action versions
+        run: npm run audit:actions
+
       - name: 🧵 ESLint
         run: npm run lint
 
