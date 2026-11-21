@@ -27,26 +27,14 @@ describe('ConstructorSpy', () => {
     })
 
     test('call constructor', () => {
-      const constructorSpy = jestClient.fn()
-
-      const DerivedClass = class extends ConstructorSpy {
-        /**
-         * Constructor of derived class.
-         *
-         * @param {*} args - Arguments of this constructor.
-         */
-        constructor (args) {
-          super(args)
-
-          constructorSpy(args)
-        }
-      }
+      const SpiedConstructorSpy = ConstructorSpy.create({ jest: jestClient })
+        .spyOn(ConstructorSpy)
 
       const params = { jest: jestClient }
 
-      DerivedClass.create(params)
+      SpiedConstructorSpy.create(params)
 
-      expect(constructorSpy)
+      expect(SpiedConstructorSpy.__spy__)
         .toHaveBeenCalledWith(params)
     })
   })
