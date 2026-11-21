@@ -37,8 +37,14 @@
     "url": "https://github.com/openreachtech/jest-constructor-spy/issues"
   },
   "homepage": "https://github.com/openreachtech/jest-constructor-spy#readme",
+  "engines": {
+    "node": ">=24.19.0",
+    "npm": ">=11.17.0"
+  },
   "devDependencies": {
-    "@openreachtech/eslint-config": "^3.0.2",
+    "@openreachtech/eslint-config": "^4.5.0",
+    "@openreachtech/mentsu-github-actions-inspector": "^0.1.0",
+    "@openreachtech/mentsu-npm-audit-gate": "^0.2.0",
     "@types/jest": "^30.0.0",
     "eslint": "^9.39.5",
     "jest": "^30.5.2"
@@ -46,10 +52,15 @@
   "overrides": {
     "@typescript-eslint/utils@7": "^8.71.2",
     "eslint-plugin-jest": "^28.14.0",
-    "js-yaml": "^4.3.2"
+    "glob": "^14.0.2",
+    "js-yaml": "^4.3.2",
+    "minimatch": "^11.0.1"
   },
   "allowScripts": {
     "@parcel/watcher": false,
     "unrs-resolver": false
+  },
+  "peerDependencies": {
+    "@jest/globals": "^30.5.2"
   }
 }
