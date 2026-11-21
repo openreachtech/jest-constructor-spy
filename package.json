@@ -51,5 +51,8 @@
   "allowScripts": {
     "@parcel/watcher": false,
     "unrs-resolver": false
+  },
+  "peerDependencies": {
+    "@jest/globals": "^30.5.2"
   }
 }
