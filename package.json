@@ -9,7 +9,7 @@
     "lib/",
     "types/"
   ],
-  "main": "index.js",
+  "main": "lib/index.js",
   "exports": {
     ".": {
       "import": "./index.mjs",
