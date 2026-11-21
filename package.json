@@ -9,6 +9,7 @@
     "lib/",
     "types/"
   ],
+  "types": "./types/index.d.ts",
   "scripts": {
     "l": "npm run lint",
     "lint": "eslint .",
