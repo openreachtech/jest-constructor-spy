@@ -1,10 +1,18 @@
 {
   "words": [
-    "jsdoc",
-    "openreach",
     "openreachtech",
-    "renchan",
 
+    "codenames",
+    "dotenv",
+    "eslintcache",
+    "hostnames",
+    "npmjs",
+    "regenerable",
+    "unbumped"
+  ],
+  "ignoreWords": [
+    "ehthumbs",
+    "encryptable",
     "esac"
   ]
 }

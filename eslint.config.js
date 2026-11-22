@@ -1,19 +1,24 @@
-'use strict'
+import {
+  default as configurations,
+  coreRuleOptionHash,
+} from '@openreachtech/eslint-config'
 
-const configurations = require('@openreachtech/eslint-config')
-
-module.exports = [
-  /*
-   * If ignores is used without any other keys in the configuration object, then the patterns act as global ignores. Here’s an example:
-   *
-   * https://eslint.org/docs/latest/use/configure/configuration-files#globally-ignoring-files-with-ignores
-   */
-  {
-    ignores: [
-      'index.mjs',
-      'config/setupAfterEnv.mjs',
-    ],
-  },
-
+export default [
   ...configurations,
+
+  {
+    // The spy class has to record the arguments it receives, and it does so in its own constructor.
+    files: [
+      'lib/ConstructorSpy.js',
+    ],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        // There are 0 or more rest parameters in the array
+        // string | { selector: string, message: string }
+        ...coreRuleOptionHash['no-restricted-syntax'].spreadOptions
+          .filter(it => it.selector !== 'MethodDefinition[kind=constructor] BlockStatement CallExpression:not([callee.type=Super])'), // Kick out `Do not call methods or functions in constructor`
+      ],
+    },
+  },
 ]

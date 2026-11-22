@@ -1,15 +1,17 @@
-'use strict'
+import {
+  jest as jestClient,
+} from '@jest/globals'
 
-const ConstructorSpy = require('../../lib/ConstructorSpy')
+import ConstructorSpy from '../../lib/ConstructorSpy.js'
 
 describe('ConstructorSpy', () => {
   describe('constructor', () => {
     describe('to keep property', () => {
       test('#jest', () => {
-        const generator = new ConstructorSpy({ jest })
+        const generator = new ConstructorSpy({ jest: jestClient })
 
         expect(generator.jest)
-          .toBe(jest) // same reference.
+          .toBe(jestClient) // same reference.
       })
     })
   })
@@ -18,33 +20,21 @@ describe('ConstructorSpy', () => {
 describe('ConstructorSpy', () => {
   describe('.create()', () => {
     test('instance of', () => {
-      const generator = ConstructorSpy.create({ jest })
+      const generator = ConstructorSpy.create({ jest: jestClient })
 
       expect(generator)
         .toBeInstanceOf(ConstructorSpy)
     })
 
     test('call constructor', () => {
-      const constructorSpy = jest.fn()
+      const SpiedConstructorSpy = ConstructorSpy.create({ jest: jestClient })
+        .spyOn(ConstructorSpy)
 
-      const DerivedClass = class extends ConstructorSpy {
-        /**
-         * Constructor of derived class.
-         *
-         * @param {*} args - Arguments of this constructor.
-         */
-        constructor (args) {
-          super(args)
+      const params = { jest: jestClient }
 
-          constructorSpy(args)
-        }
-      }
+      SpiedConstructorSpy.create(params)
 
-      const params = { jest }
-
-      DerivedClass.create(params)
-
-      expect(constructorSpy)
+      expect(SpiedConstructorSpy.__spy__)
         .toHaveBeenCalledWith(params)
     })
   })
@@ -53,7 +43,7 @@ describe('ConstructorSpy', () => {
 describe('ConstructorSpy', () => {
   describe('#spyOn()', () => {
     describe('spy works', () => {
-      const generator = ConstructorSpy.create({ jest })
+      const generator = ConstructorSpy.create({ jest: jestClient })
 
       /**
        * Spy target class.
